@@ -1,4 +1,4 @@
-package main.scala.ch3
+package ch3
 
 sealed trait Tree[+A]
 case class Leaf[A](value: A) extends Tree[A]
@@ -46,6 +46,34 @@ object Tree {
       // Above can be factored to 1 + (depth(l) + depth(r))
     }
   }
+  
+  /* Exercise 3.28
+   * Write a function map, analogous to that for list.
+   */
+  def map[A,B](as: Tree[A])(f: A => B): Tree[B] = {
+    as match {
+      case Leaf(a) => Leaf(f(a))
+      case Branch(l,r) => Branch(map(l)(f), map(r)(f))
+    }
+  }
+  
+  /* Exercise 3.29
+   * Generalize the previous functions by defining a function fold,
+   * that abstracts over their similarities. Then implement these using
+   * the newly defined fold function.
+   */
+  // Need a second function that combines the left and right branch
+  def fold[A,B](t: Tree[A])(f: A => B)(g: (B,B) => B): B = {
+    t match {
+      case Leaf(a) => f(a)
+      case Branch(l,r) => g(fold(l)(f)(g), fold(r)(f)(g))
+    }
+  }
+  
+  // Now any recursive functions can be performed using the fold function
+  def depth2[A](t: Tree[A]) = {
+    fold(t)((_) => 0)((a,b) => 1 + (a max b))
+  }
 }
 
 object MainTree {
@@ -65,6 +93,12 @@ object MainTree {
     println(Tree.depth(Leaf(0))) // 0
     println(Tree.depth(Branch(Leaf(1), Leaf(2)))) // 1
     println(Tree.depth(Branch(Leaf(1), Branch(Leaf(2), Branch(Leaf(3), Leaf(4)))))) // 3
+    
+    println()
+
+    println(Tree.depth2(Leaf(0))) // 0
+    println(Tree.depth2(Branch(Leaf(1), Leaf(2)))) // 1
+    println(Tree.depth2(Branch(Leaf(1), Branch(Leaf(2), Branch(Leaf(3), Leaf(4)))))) // 3
 
   }
 }

@@ -1,4 +1,4 @@
-package main.scala.ch3
+package ch3
 
 // sealed means that all must be defined in this file
 sealed trait List[+A]
