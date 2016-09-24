@@ -11,7 +11,7 @@ object chapter1 {
     }
     loop(1, 0, n)
   }                                               //> fib: (n: Int)Int
-  
+
   /* Exercise 2.2
    * Implement isSorted which checks whether a given array is sorted
    */
@@ -27,5 +27,5 @@ object chapter1 {
                                                   //> res0: Boolean = true
    isSorted(Array(1,10,3,4), (a: Int, b: Int) => a < b)
                                                   //> res1: Boolean = false
-  
+
 }
