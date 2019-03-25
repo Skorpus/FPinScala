@@ -1,4 +1,4 @@
-package ch3
+package main.ch3
 
 object chapter3_1 {
 	

@@ -1,4 +1,4 @@
-package ch10
+package main.ch10
 
 /**
  * A Monoid is a type of algebra which adheres to the following constructs:

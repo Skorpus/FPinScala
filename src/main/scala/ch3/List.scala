@@ -1,4 +1,4 @@
-package ch3
+package main.ch3
 
 // sealed means that all must be defined in this file
 sealed trait List[+A]

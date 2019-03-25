@@ -1,4 +1,4 @@
-package ch4
+package main.ch4
 //hide std library `Option` and `Either`, since we are writing our own in this chapter
 import scala.{ Option => _, Either => _, _ }
 

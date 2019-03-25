@@ -1,2 +1,5 @@
 .cache-main
 bin/
+.worksheet/
+.idea/
+target/
